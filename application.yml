@@ -31,3 +31,6 @@ plugins:
       - ANDROID_MUSIC
       - ANDROID_VR
       - WEBEMBEDDED
+    oauth:
+      enabled: true
+      # Do not commit a refresh token. Complete OAuth from Railway logs.
