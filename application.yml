@@ -33,4 +33,4 @@ plugins:
       - WEBEMBEDDED
     oauth:
       enabled: true
-      # Do not commit a refresh token. Complete OAuth from Railway logs.
+      refreshToken: ${YOUTUBE_REFRESH_TOKEN:}

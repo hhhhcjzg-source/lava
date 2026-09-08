@@ -7,9 +7,10 @@ This repository deploys Lavalink 4 with the Lavalink YouTube source plugin on Ra
 1. Create a Railway project from this GitHub repository.
 2. Deploy the service using the included `Dockerfile`.
 3. Add the Railway variable `LAVALINK_PASSWORD` with a long random value. Never commit this value to Git.
-4. Railway supplies `PORT` automatically. The server listens on `${PORT:2333}`.
-5. Generate a public Railway domain from the service networking settings. Use the public HTTPS endpoint, normally port `443`, for the Discord bot.
-6. Redeploy and inspect the deployment logs for the YouTube OAuth flow. Complete authorization with a separate Google account rather than a primary personal account.
+4. Add the Railway secret variable `YOUTUBE_REFRESH_TOKEN` containing the OAuth refresh token for a separate Google account. Never commit this token to Git or post it in Discord.
+5. Railway supplies `PORT` automatically. The server listens on `${PORT:2333}`.
+6. Generate a public Railway domain from the service networking settings. Use the public HTTPS endpoint, normally port `443`, for the Discord bot.
+7. Redeploy and inspect the deployment logs. Lavalink should initialize OAuth without an empty-token or authentication error.
 
 ## Bot configuration
 
@@ -59,4 +60,4 @@ A healthy deployment returns HTTP 200 and a Lavalink 4.x version. A 401 response
 
 ## Security
 
-Do not commit `LAVALINK_PASSWORD`, OAuth refresh tokens, Google credentials, or bot tokens. Store all credentials in Railway variables or the bot host's environment file. Rotate any credential that has been posted in a public channel.
+Do not commit `LAVALINK_PASSWORD`, `YOUTUBE_REFRESH_TOKEN`, OAuth refresh tokens, Google credentials, or bot tokens. Store all credentials in Railway variables or the bot host's environment file. Rotate any credential that has been posted in a public channel.
